@@ -29,6 +29,7 @@ For our team project, the group was tasked to set up a hydroponic garden / fish 
 
 ## Cad prototypes
 ![docs](https://github.com/BlessingYumbe/Fish-Feeder/blob/master/docs/Body1.stl)
+The [Body9.stl](Body9.stl) script was run in python.
 
 
 
