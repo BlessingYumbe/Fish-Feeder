@@ -38,6 +38,9 @@ For our team project, the group was tasked to set up a hydroponic garden / fish 
 
 Arduino is connected to the computer via a mini-USB 
 
+## Arduino Code
+
+## Python Code
 
 ## Future Work
 
