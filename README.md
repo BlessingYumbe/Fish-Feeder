@@ -43,6 +43,10 @@ The [Body9.stl](Body9.stl) autocad
 The [Body16.stl](Body16.stl) autocad
 
 
+## Cad Prototypes after being printed
+
+![docs](https://github.com/BlessingYumbe/Fish-Feeder/blob/master/docs/image1.jpeg)
+
 
 ### Fritzing Diagram
 ![docs](https://github.com/mapo243/Fish-Feeder/blob/master/docs/Fish%20Feeder.png)
