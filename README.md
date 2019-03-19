@@ -30,18 +30,17 @@ For our team project, the group was tasked to set up a hydroponic garden / fish 
 ## Cad prototypes
 Here are the cad prototypes designed for the project
 
-The [Body1.stl](Body1.stl) autocad
+The [Body1.stl](Body1.stl) AUTOCAD
 
-The [Body2.stl](Body2.stl) autocad
+The [Body2.stl](Body2.stl) AUTOCAD
 
-The [Body3.stl](Body3.stl) autocad
+The [Body3.stl](Body3.stl) AUTOCAD
 
-The [Body8.stl](Body8.stl) autocad
+The [Body8.stl](Body8.stl) AUTOCAD
 
-The [Body9.stl](Body9.stl) autocad
+The [Body9.stl](Body9.stl) AUTOCAD
 
-The [Body16.stl](Body16.stl) autocad
-
+The [Body16.stl](Body16.stl) AUTOCAD
 
 ## Cad Prototypes after being printed
 ![docs](https://github.com/BlessingYumbe/Fish-Feeder/blob/master/docs/image2.jpeg)
