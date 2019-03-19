@@ -25,10 +25,7 @@ For our team project, the group was tasked to set up a hydroponic garden / fish 
 
 
 ### Fritzing Diagram
-
-
-!/doc/fritzing_temp_sensor_redboard.png "Alt-title)
-
+![docs](https://github.com/mapo243/Fish-Feeder/blob/master/docs/Circuit%20Photo%203%20Small.png)
 
 
 ![](Circuit Photo 3 Small.png)
