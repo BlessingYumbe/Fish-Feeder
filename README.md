@@ -45,8 +45,7 @@ The [fish_feeder.py](fish_feeder.py) script was run in python.
 ![docs](https://github.com/mapo243/Fish-Feeder/blob/master/docs/Results%20-%20Thingspeak%20Status.png)
 
 ## Future Work
-This project was quite interesting to set up the hydroponic fish garden. While using Python, the program was taking time initialize the code itself to get some values of the temperature vs time. For future work, another group could write a program that can control not only the temperature but other aspects such as the lighting, water flow/waste inside the fish garden. And all of these could be fully automated and controlled remotely using a smartphone.
-
+This project was quite interesting to set up with the hydroponic fish garden. While using Python, the program was taking time initialize the code itself to prevent multiple ThingSpeak write requests in too short of a time. For future work, another group improve the communication scheme to reduce this delay and prevent failed requests to dispense food.  Additionally, another group could add hardware that can monitor and control conditions such as temperature, lighting, water flow/waste inside the fish garden. And all of these could be fully automated and controlled remotely using a smartphone.
  
 
 ## License
