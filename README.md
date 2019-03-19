@@ -39,7 +39,7 @@ The [fish_feeder.ino](fish_feeder.ino) sketch was uploaded on the Arduino using 
 
 ## Python Code
 
-The [fish_feeder.py](fish_feeder.py) script was run in python.
+The [fish_feerder.py](fish_feerder.py) script was run in python.
 
 ## Results
 
