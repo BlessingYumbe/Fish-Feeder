@@ -28,8 +28,19 @@ For our team project, the group was tasked to set up a hydroponic garden / fish 
 |1 x 10k Ω Resistor|[	Divide Voltage	Resistor 10k Ω 1/6th Watt PTH](https://www.sparkfun.com/products/8374)|
 
 ## Cad prototypes
-![docs](https://github.com/BlessingYumbe/Fish-Feeder/blob/master/docs/Body1.stl)
-The [Body9.stl](Body9.stl) script was run in python.
+Here are the cad prototypes designed for the project
+
+The [Body1.stl](Body1.stl) autocad
+
+The [Body2.stl](Body2.stl) autocad
+
+The [Body3.stl](Body3.stl) autocad
+
+The [Body8.stl](Body8.stl) autocad
+
+The [Body9.stl](Body9.stl) autocad
+
+The [Body16.stl](Body16.stl) autocad
 
 
 
