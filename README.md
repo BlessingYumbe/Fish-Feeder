@@ -45,6 +45,7 @@ The [mapo.py](mapo.py) script was run in MATLAB.
 ## Results
 ![Alt-text](/docs/Results - Thingspeak Status.png "Alt-title")
 
+
 ## Future Work
 This project was quite interesting to set up the hydroponic fish garden. While using Python, the program was taking time initialize the code itself to get some values of the temperature vs time. For future work, another group could write a program that can control not only the temperature but other aspects such as the lighting, water flow/waste inside the fish garden. And all of these could be fully automated and controlled remotely using a smartphone.
 Results:
