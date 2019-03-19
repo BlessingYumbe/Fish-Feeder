@@ -24,6 +24,11 @@ For our team project, the group was tasked to set up a hydroponic garden / fish 
 |1 x 10k Ω Resistor|[	Divide Voltage	Resistor 10k Ω 1/6th Watt PTH](https://www.sparkfun.com/products/8374)|
 
 
+### Fritzing Diagram
+
+![Alt-text](/doc/fritzing_temp_sensor_redboard.png "Alt-title")
+
+
 
 
 
