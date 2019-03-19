@@ -26,11 +26,11 @@ For our team project, the group was tasked to set up a hydroponic garden / fish 
 
 ### Fritzing Diagram
 
-![Alt-text](/doc/fritzing_temp_sensor_redboard.png "Alt-title")
+![Al](/doc/fritzing_temp_sensor_redboard.png "Alt-title")
 
 
 
-![Alt-text](Circuit Photo 3 Small.png"Alt-title")
+![](Circuit Photo 3 Small.png"Alt-title")
 
 Arduino is connected to the computer via a mini-USB 
 
