@@ -27,6 +27,8 @@ For our team project, the group was tasked to set up a hydroponic garden / fish 
 ### Fritzing Diagram
 ![docs](https://github.com/mapo243/Fish-Feeder/blob/master/docs/Fish%20Feeder.png)
 
+## Connected Hardware
+
 Arduino is connected to the computer via a mini-USB 
 
 
