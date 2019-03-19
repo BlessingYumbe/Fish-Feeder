@@ -25,12 +25,10 @@ For our team project, the group was tasked to set up a hydroponic garden / fish 
 
 
 ### Fritzing Diagram
-![docs](https://github.com/mapo243/Fish-Feeder/blob/master/docs/Circuit%20Photo%203%20Small.png)
-
-
-![](Circuit Photo 3 Small.png)
+![docs](https://github.com/mapo243/Fish-Feeder/blob/master/docs/Fish%20Feeder.png)
 
 Arduino is connected to the computer via a mini-USB 
+![docs](https://github.com/mapo243/Fish-Feeder/blob/master/docs/Circuit%20Photo%203%20Small.png)
 
 ## Arduino Code
 The [mapo.ino](mapo.ino) sketch was uploaded on the Arduino using the Arduino IDE.
@@ -40,8 +38,7 @@ The [mapo.ino](mapo.ino) sketch was uploaded on the Arduino using the Arduino ID
 The [mapo.py](mapo.py) script was run in MATLAB.
 
 ## Results
-![Alt-text](/docs/Results - Thingspeak Status.png "Alt-title")
-
+![docs](https://github.com/mapo243/Fish-Feeder/blob/master/docs/Results%20-%20Thingspeak%20Status.png)
 
 ## Future Work
 This project was quite interesting to set up the hydroponic fish garden. While using Python, the program was taking time initialize the code itself to get some values of the temperature vs time. For future work, another group could write a program that can control not only the temperature but other aspects such as the lighting, water flow/waste inside the fish garden. And all of these could be fully automated and controlled remotely using a smartphone.
