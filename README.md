@@ -27,6 +27,10 @@ For our team project, the group was tasked to set up a hydroponic garden / fish 
 |3 x 330 Ω Resistor|[	Limit Current	Resistor 330 Ω 1/6th Watt PTH](https://www.sparkfun.com/products/8377)|
 |1 x 10k Ω Resistor|[	Divide Voltage	Resistor 10k Ω 1/6th Watt PTH](https://www.sparkfun.com/products/8374)|
 
+## Cad prototypes
+![docs](https://github.com/BlessingYumbe/Fish-Feeder/blob/master/docs/Body1.stl)
+
+
 
 ### Fritzing Diagram
 ![docs](https://github.com/mapo243/Fish-Feeder/blob/master/docs/Fish%20Feeder.png)
