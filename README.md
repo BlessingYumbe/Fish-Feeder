@@ -26,6 +26,7 @@ For our team project, the group was tasked to set up a hydroponic garden / fish 
 
 ### Fritzing Diagram
 
+
 !/doc/fritzing_temp_sensor_redboard.png "Alt-title)
 
 
