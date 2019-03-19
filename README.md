@@ -43,7 +43,7 @@ The [mapo.py](mapo.py) script was run in MATLAB.
 
 ## Results
 
-![Alt-text](/doc/results.png "Alt-title")
+![Alt-text](Results - Thingspeak Status.png"Alt-title")
 
 ## Future Work
 
