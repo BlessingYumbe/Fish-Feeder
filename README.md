@@ -42,6 +42,9 @@ The [fish_feeder.ino](fish_feeder.ino) sketch was uploaded on the Arduino using 
 The [fish_feeder.py](fish_feeder.py) script was run in python.
 
 ## Results
+
+Screenshot from ThingSpeak Channel showing resulting status updates when fish are fed.
+
 ![docs](https://github.com/mapo243/Fish-Feeder/blob/master/docs/Results%20-%20Thingspeak%20Status.png)
 
 ## Future Work
