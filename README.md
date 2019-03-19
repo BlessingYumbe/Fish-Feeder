@@ -35,11 +35,11 @@ Arduino is connected to the computer via a mini-USB
 ![docs](https://github.com/mapo243/Fish-Feeder/blob/master/docs/Circuit%20Photo%203%20Small.png)
 
 ## Arduino Code
-The [mapo.ino](mapo.ino) sketch was uploaded on the Arduino using the Arduino IDE.
+The [fish_feeder.ino](fish_feeder.ino) sketch was uploaded on the Arduino using the Arduino IDE.
 
 ## Python Code
 
-The [mapo.py](mapo.py) script was run in python.
+The [fish_feeder.py](fish_feeder.py) script was run in python.
 
 ## Results
 ![docs](https://github.com/mapo243/Fish-Feeder/blob/master/docs/Results%20-%20Thingspeak%20Status.png)
