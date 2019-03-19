@@ -1,7 +1,10 @@
 # Fish-Feeder
 Set up a hydroponic garden / fish tank installation using a hardware such as sensors that could measure the temperature pH and water depth in the fish tank and help determine when the pump needs to be turned on.
 # Problem Statement:
-For our team project, the group was tasked to set up a hydroponic garden / fish tank installation using a hardware such as sensors that could measure the temperature pH and water depth in the fish tank and help determine when the pump needs to be turned on. Using Python, the group has interacted an Arduino to dynamically collect sensor data and record the temperature over a set amount of time with the temperature displayed at regular intervals.
+For our team project, the group was tasked to set up a hydroponic garden / fish tank installation using hardware and the internet of things to automate monitoring or maintaining of the system.  We have decided to automate feeding of the fish to allow remote feeding when access to the tank installation is not available.   Using Python, the group has interacted with an Arduino to remotely initialize dispensing fish food into the tank and output the status back to a ThingSpeak channel whether or not the feeding was successful.  Additionally, our Feeder apparatus will use a photocell to determine if food remains available for the feed to continue to dispense.  If the photocell detects that the feeder is empty, the system reports that status to ThingSpeak and the dispense food requests is alerted to the status.
+
+
+
 
 
 ## Hardware Setup
