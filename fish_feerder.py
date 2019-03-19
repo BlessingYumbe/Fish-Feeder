@@ -1,241 +1,158 @@
-{
- "cells": [
-  {
-   "cell_type": "code",
-   "execution_count": 1,
-   "metadata": {},
-   "outputs": [
-    {
-     "name": "stdout",
-     "output_type": "stream",
-     "text": [
-      "Fish Feeder Transceiver\n",
-      "***Main Menu***\n",
-      "Choose the following:\n",
-      "1: Transmitter\n",
-      "2: Receiver\n",
-      "0: Exit\n",
-      "2\n",
-      "***Receiver***\n"
-     ]
-    },
-    {
-     "ename": "error",
-     "evalue": "(6, 'Device not configured')",
-     "output_type": "error",
-     "traceback": [
-      "\u001b[0;31m---------------------------------------------------------------------------\u001b[0m",
-      "\u001b[0;31merror\u001b[0m                                     Traceback (most recent call last)",
-      "\u001b[0;32m<ipython-input-1-c0f3f9f16bc9>\u001b[0m in \u001b[0;36m<module>\u001b[0;34m()\u001b[0m\n\u001b[1;32m    124\u001b[0m \u001b[0;34m\u001b[0m\u001b[0m\n\u001b[1;32m    125\u001b[0m                 \u001b[0;31m#reset input buffer to ensure latest serial output from board is read\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0;32m--> 126\u001b[0;31m                 \u001b[0mser\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mreset_input_buffer\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0m\u001b[1;32m    127\u001b[0m                 \u001b[0mboard_status\u001b[0m \u001b[0;34m=\u001b[0m \u001b[0mser\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mreadline\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[1;32m    128\u001b[0m \u001b[0;34m\u001b[0m\u001b[0m\n",
-      "\u001b[0;32m~/anaconda3/lib/python3.7/site-packages/pyserial-3.4-py3.7.egg/serial/serialposix.py\u001b[0m in \u001b[0;36mreset_input_buffer\u001b[0;34m(self)\u001b[0m\n\u001b[1;32m    593\u001b[0m         \u001b[0;32mif\u001b[0m \u001b[0;32mnot\u001b[0m \u001b[0mself\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mis_open\u001b[0m\u001b[0;34m:\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[1;32m    594\u001b[0m             \u001b[0;32mraise\u001b[0m \u001b[0mportNotOpenError\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0;32m--> 595\u001b[0;31m         \u001b[0mtermios\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mtcflush\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0mself\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mfd\u001b[0m\u001b[0;34m,\u001b[0m \u001b[0mtermios\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mTCIFLUSH\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0m\u001b[1;32m    596\u001b[0m \u001b[0;34m\u001b[0m\u001b[0m\n\u001b[1;32m    597\u001b[0m     \u001b[0;32mdef\u001b[0m \u001b[0mreset_output_buffer\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0mself\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m:\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n",
-      "\u001b[0;31merror\u001b[0m: (6, 'Device not configured')"
-     ]
-    }
-   ],
-   "source": [
-    "#imports needed\n",
-    "import time\n",
-    "import serial\n",
-    "import urllib\n",
-    "import pandas as pd\n",
-    "import numpy as np\n",
-    "\n",
-    "#function to read and return value of single thingspeak field\n",
-    "def read_field_thingspeak(channel, api_key, field, results):\n",
-    "    read_link = 'https://api.thingspeak.com/channels/' + str(channel) + '/fields/' + str(field) + '.csv?api_key=' + str(api_key) +'&results=' + str(results)\n",
-    "    df = pd.read_csv(urllib.request.urlopen(read_link))\n",
-    "    df.drop(['created_at'], axis=1, inplace=True)\n",
-    "    return np.array(df)[0][1]\n",
-    "\n",
-    "#function that reads thingspeak status\n",
-    "def read_status_thingspeak(channel, api_key, results):\n",
-    "    read_link = 'https://api.thingspeak.com/channels/' + str(channel) + '/status.csv?api_key=' + str(api_key) +'&results=' + str(results)\n",
-    "    return urllib.request.urlopen(read_link)\n",
-    "\n",
-    "#function that formats and requests a link to write to two thingspeak fields at once\n",
-    "def write_to_thingspeak(api_key, field1, value1, field2, value2):\n",
-    "    write_link = 'https://api.thingspeak.com/update?api_key=' + str(api_key) + '&field'+ str(field1) +'=' + str(value1) +'&field'+ str(field2) +'=' + str(value2)\n",
-    "    urllib.request.urlopen(write_link)\n",
-    "\n",
-    "#function to write status to thingspeak in addtion to both fields\n",
-    "def write_to_thingspeak_status(api_key, field1, value1, field2, value2, status):\n",
-    "    write_link = 'https://api.thingspeak.com/update?api_key=' + str(api_key) + '&field'+ str(field1) +'=' + str(value1) +'&field'+ str(field2) +'=' + str(value2) +'&status=' + status\n",
-    "    urllib.request.urlopen(write_link)\n",
-    "\n",
-    "#declare variables related for specific thingspeak channel    \n",
-    "channel = '720608'\n",
-    "read_api_key = 'RRGPJE5YQ8JJPRIR'\n",
-    "write_api_key='C7MKD36DWMJS69UL'\n",
-    "\n",
-    "#declare variable for COM port for serial communication\n",
-    "com = '/dev/cu.usbserial-DN051CFK'\n",
-    "\n",
-    "#declare variables to validate user input\n",
-    "function_selection = ''\n",
-    "action = ''\n",
-    "print('Fish Feeder Transceiver')\n",
-    "while(function_selection != '0'):\n",
-    "    print('***Main Menu***')\n",
-    "    #prompt user to choose between transmitter or receiver functionality\n",
-    "    function_selection = input('Choose the following:\\n1: Transmitter\\n2: Receiver\\n0: Exit\\n')\n",
-    "    if function_selection == '1':\n",
-    "        #while loop that runs for duration of program to prompt for user input\n",
-    "        while(action != '0'):\n",
-    "            #initialization delay to prevent multiple thingspeak write attempts within a short period.\n",
-    "            print('\\nInitializing', end='')\n",
-    "            for i in range(15):\n",
-    "                print('.', end='')\n",
-    "                time.sleep(1)\n",
-    "            #prompt user for input and move through program accordingly\n",
-    "            action = input('\\n\\n***Transmitter***\\nChoose the following:\\n1: Feed Fish!\\n2: Last Time Fish Fed?\\n3: Feeder Status\\n0: Exit\\n')               \n",
-    "            if action == '1':\n",
-    "                #read initial feeder status\n",
-    "                status = read_field_thingspeak(channel,read_api_key,1,1)\n",
-    "                if(status != 0):\n",
-    "                    #if status not empty write the run command to thingspeak\n",
-    "                    write_to_thingspeak(write_api_key,1,1,2,1)\n",
-    "                    #communication delay to ensure time for arduino to process command and respond to thingspeak\n",
-    "                    print('Communicating', end='')\n",
-    "                    for i in range(20):\n",
-    "                        print('.', end='')\n",
-    "                        time.sleep(1)\n",
-    "                \n",
-    "                    #read feeder status to check if feeding was succesful    \n",
-    "                    status = read_field_thingspeak(channel,read_api_key,1,1)\n",
-    "                    if(status==0):\n",
-    "                        print('\\nFeeder Empty!')\n",
-    "                        continue\n",
-    "                    elif(status == 1):\n",
-    "                        #read feeder command, if command is still 1 then hardware never read command, if 0 then hardware ran command\n",
-    "                        command = read_field_thingspeak(channel,read_api_key,2,1)\n",
-    "                        if(command == 1):\n",
-    "                            print('\\nFeeder Not Responding!')\n",
-    "                        else: \n",
-    "                            print('\\nFood Dispensed.')\n",
-    "                else:\n",
-    "                    #if status is 0 then the feeder is empty\n",
-    "                    print('\\nFeeder Empty!')\n",
-    "            elif action == '2':\n",
-    "                #query time last fed and report to user\n",
-    "                df = pd.read_csv(read_status_thingspeak(channel, read_api_key, 1))\n",
-    "                print('Fish last fed', np.array(df)[0][0])\n",
-    "                continue\n",
-    "            elif action == '3':\n",
-    "                #query feeder status and report to user\n",
-    "                #field 1:status(0=EMPTY, 1=READY)\n",
-    "                #field 2:command(0=IDLE, 1=RUN)\n",
-    "                status = read_field_thingspeak(channel,read_api_key,1,1)\n",
-    "                command = read_field_thingspeak(channel,read_api_key,2,1)\n",
-    "                if(status==0):\n",
-    "                    print('Feeder Empty!')\n",
-    "                elif(status==1):\n",
-    "                    print('Feeder Ready.')     \n",
-    "            elif action == '0':\n",
-    "                #terminate program\n",
-    "                print(\"Transmitter Terminated.\")\n",
-    "                break\n",
-    "            else:\n",
-    "                print('Invalid Input!\\n\\n')\n",
-    "                continue\n",
-    "                \n",
-    "                \n",
-    "    elif function_selection == '2':\n",
-    "        print('***Receiver***')\n",
-    "        try:\n",
-    "            #initialize serial communication\n",
-    "            ser = serial.Serial(com, 9600, timeout=1)\n",
-    "            time.sleep(2)\n",
-    "        except:\n",
-    "            print('Serial Communication Error!\\nReturning to Main Menu.\\n\\n')\n",
-    "        else:\n",
-    "            #while loop that runs while serial communication is open\n",
-    "            while ser.is_open:\n",
-    "    \n",
-    "                #query thingspeak for feeder status and command\n",
-    "                #field 1:status(0=EMPTY, 1=READY)\n",
-    "                #field 2:command(0=IDLE, 1=RUN)\n",
-    "                status = read_field_thingspeak(channel,read_api_key,1,1)\n",
-    "                command = read_field_thingspeak(channel,read_api_key,2,1)\n",
-    "    \n",
-    "                #reset input buffer to ensure latest serial output from board is read\n",
-    "                ser.reset_input_buffer()\n",
-    "                board_status = ser.readline()\n",
-    "    \n",
-    "                #board is communicating empty status\n",
-    "                if(board_status == b'EMPTY\\r\\n'):\n",
-    "                    if(status!=0):\n",
-    "                        write_to_thingspeak(write_api_key,1,0,2,0)\n",
-    "                        time.sleep(15)\n",
-    "            \n",
-    "                #board is commmunicating ready status\n",
-    "                if(board_status == b'READY\\r\\n'):\n",
-    "                    #command is IDLE\n",
-    "                    if(command == 0):\n",
-    "                        if(status != 1):\n",
-    "                            write_to_thingspeak(write_api_key,1,1,2,0)\n",
-    "                            time.sleep(15)\n",
-    "                    #command is RUN\n",
-    "                    if(command == 1):\n",
-    "                        ser.write(b'1')\n",
-    "                        time.sleep(15)\n",
-    "                        write_to_thingspeak_status(write_api_key,1,1,2,0,'Food Dispensed')\n",
-    "                #delay    \n",
-    "                time.sleep(1)\n",
-    "\n",
-    "            #close serial communication and terminate program\n",
-    "            ser.close()\n",
-    "            print('Serial Communication Closed. Receiver Terminated.')\n",
-    "    elif(function_selection =='0'):\n",
-    "        print('Program Terminated.')\n",
-    "        break\n",
-    "    else:\n",
-    "        print('Invalid Input!\\n\\n')\n",
-    "        continue"
-   ]
-  },
-  {
-   "cell_type": "markdown",
-   "metadata": {},
-   "source": [
-    "ser.close()"
-   ]
-  },
-  {
-   "cell_type": "code",
-   "execution_count": null,
-   "metadata": {},
-   "outputs": [],
-   "source": [
-    "ser.close()"
-   ]
-  },
-  {
-   "cell_type": "code",
-   "execution_count": null,
-   "metadata": {},
-   "outputs": [],
-   "source": []
-  }
- ],
- "metadata": {
-  "kernelspec": {
-   "display_name": "Python 3",
-   "language": "python",
-   "name": "python3"
-  },
-  "language_info": {
-   "codemirror_mode": {
-    "name": "ipython",
-    "version": 3
-   },
-   "file_extension": ".py",
-   "mimetype": "text/x-python",
-   "name": "python",
-   "nbconvert_exporter": "python",
-   "pygments_lexer": "ipython3",
-   "version": "3.7.0"
-  }
- },
- "nbformat": 4,
- "nbformat_minor": 2
-}
+#imports needed
+import time
+import serial
+import urllib
+import pandas as pd
+import numpy as np
+
+#function to read and return value of single thingspeak field
+def read_field_thingspeak(channel, api_key, field, results):
+    read_link = 'https://api.thingspeak.com/channels/' + str(channel) + '/fields/' + str(field) + '.csv?api_key=' + str(api_key) +'&results=' + str(results)
+    df = pd.read_csv(urllib.request.urlopen(read_link))
+    df.drop(['created_at'], axis=1, inplace=True)
+    return np.array(df)[0][1]
+
+#function that reads thingspeak status
+def read_status_thingspeak(channel, api_key, results):
+    read_link = 'https://api.thingspeak.com/channels/' + str(channel) + '/status.csv?api_key=' + str(api_key) +'&results=' + str(results)
+    return urllib.request.urlopen(read_link)
+
+#function that formats and requests a link to write to two thingspeak fields at once
+def write_to_thingspeak(api_key, field1, value1, field2, value2):
+    write_link = 'https://api.thingspeak.com/update?api_key=' + str(api_key) + '&field'+ str(field1) +'=' + str(value1) +'&field'+ str(field2) +'=' + str(value2)
+    urllib.request.urlopen(write_link)
+
+#function to write status to thingspeak in addtion to both fields
+def write_to_thingspeak_status(api_key, field1, value1, field2, value2, status):
+    write_link = 'https://api.thingspeak.com/update?api_key=' + str(api_key) + '&field'+ str(field1) +'=' + str(value1) +'&field'+ str(field2) +'=' + str(value2) +'&status=' + status
+    urllib.request.urlopen(write_link)
+
+#declare variables related for specific thingspeak channel    
+channel = '720608'
+read_api_key = 'RRGPJE5YQ8JJPRIR'
+write_api_key='C7MKD36DWMJS69UL'
+
+#declare variable for COM port for serial communication
+com = '/dev/cu.usbserial-DN051CFK'
+
+#declare variables to validate user input
+function_selection = ''
+action = ''
+print('Fish Feeder Transceiver')
+while(function_selection != '0'):
+    print('***Main Menu***')
+    #prompt user to choose between transmitter or receiver functionality
+    function_selection = input('Choose the following:\n1: Transmitter\n2: Receiver\n0: Exit\n')
+    if function_selection == '1':
+        #while loop that runs for duration of program to prompt for user input
+        while(action != '0'):
+            #initialization delay to prevent multiple thingspeak write attempts within a short period.
+            print('\nInitializing', end='')
+            for i in range(15):
+                print('.', end='')
+                time.sleep(1)
+            #prompt user for input and move through program accordingly
+            action = input('\n\n***Transmitter***\nChoose the following:\n1: Feed Fish!\n2: Last Time Fish Fed?\n3: Feeder Status\n0: Exit\n')               
+            if action == '1':
+                #read initial feeder status
+                status = read_field_thingspeak(channel,read_api_key,1,1)
+                if(status != 0):
+                    #if status not empty write the run command to thingspeak
+                    write_to_thingspeak(write_api_key,1,1,2,1)
+                    #communication delay to ensure time for arduino to process command and respond to thingspeak
+                    print('Communicating', end='')
+                    for i in range(20):
+                        print('.', end='')
+                        time.sleep(1)
+                
+                    #read feeder status to check if feeding was succesful    
+                    status = read_field_thingspeak(channel,read_api_key,1,1)
+                    if(status==0):
+                        print('\nFeeder Empty!')
+                        continue
+                    elif(status == 1):
+                        #read feeder command, if command is still 1 then hardware never read command, if 0 then hardware ran command
+                        command = read_field_thingspeak(channel,read_api_key,2,1)
+                        if(command == 1):
+                            print('\nFeeder Not Responding!')
+                        else: 
+                            print('\nFood Dispensed.')
+                else:
+                    #if status is 0 then the feeder is empty
+                    print('\nFeeder Empty!')
+            elif action == '2':
+                #query time last fed and report to user
+                df = pd.read_csv(read_status_thingspeak(channel, read_api_key, 1))
+                print('Fish last fed', np.array(df)[0][0])
+                continue
+            elif action == '3':
+                #query feeder status and report to user
+                #field 1:status(0=EMPTY, 1=READY)
+                #field 2:command(0=IDLE, 1=RUN)
+                status = read_field_thingspeak(channel,read_api_key,1,1)
+                command = read_field_thingspeak(channel,read_api_key,2,1)
+                if(status==0):
+                    print('Feeder Empty!')
+                elif(status==1):
+                    print('Feeder Ready.')     
+            elif action == '0':
+                #terminate program
+                print("Transmitter Terminated.")
+                break
+            else:
+                print('Invalid Input!\n\n')
+                continue
+                
+                
+    elif function_selection == '2':
+        print('***Receiver***')
+        try:
+            #initialize serial communication
+            ser = serial.Serial(com, 9600, timeout=1)
+            time.sleep(2)
+        except:
+            print('Serial Communication Error!\nReturning to Main Menu.\n\n')
+        else:
+            #while loop that runs while serial communication is open
+            while ser.is_open:
+    
+                #query thingspeak for feeder status and command
+                #field 1:status(0=EMPTY, 1=READY)
+                #field 2:command(0=IDLE, 1=RUN)
+                status = read_field_thingspeak(channel,read_api_key,1,1)
+                command = read_field_thingspeak(channel,read_api_key,2,1)
+    
+                #reset input buffer to ensure latest serial output from board is read
+                ser.reset_input_buffer()
+                board_status = ser.readline()
+    
+                #board is communicating empty status
+                if(board_status == b'EMPTY\r\n'):
+                    if(status!=0):
+                        write_to_thingspeak(write_api_key,1,0,2,0)
+                        time.sleep(15)
+            
+                #board is commmunicating ready status
+                if(board_status == b'READY\r\n'):
+                    #command is IDLE
+                    if(command == 0):
+                        if(status != 1):
+                            write_to_thingspeak(write_api_key,1,1,2,0)
+                            time.sleep(15)
+                    #command is RUN
+                    if(command == 1):
+                        ser.write(b'1')
+                        time.sleep(15)
+                        write_to_thingspeak_status(write_api_key,1,1,2,0,'Food Dispensed')
+                #delay    
+                time.sleep(1)
+
+            #close serial communication and terminate program
+            ser.close()
+            print('Serial Communication Closed. Receiver Terminated.')
+    elif(function_selection =='0'):
+        print('Program Terminated.')
+        break
+    else:
+        print('Invalid Input!\n\n')
+        continue
