@@ -39,8 +39,11 @@ For our team project, the group was tasked to set up a hydroponic garden / fish 
 Arduino is connected to the computer via a mini-USB 
 
 ## Arduino Code
+The[mapo.ino](mapo.ino) sketch was uploaded on the Arduino using the Arduino IDE.
 
 ## Python Code
+
+The [mapo.py](mapo.py) script was run in MATLAB.
 
 ## Future Work
 
